@@ -5,7 +5,7 @@ module.exports = robot => {
   // cron.schedule('00 00 08 * * *', () => {
   cron.schedule('00 * * * * *', () => {
     robot.send({
-      room: 'random'
+      room: '#random'
     }, "@here おはよう、もう起きる時間だよ〜");
   });
 };
