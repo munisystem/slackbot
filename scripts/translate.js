@@ -7,8 +7,9 @@ const cheerio = require('cheerio');
 const URL = 'http://ejje.weblio.jp/content/'
 
 module.exports = robot => {
-  robot.hear(/^trans (.+)$/, msg => {
-    const str = encodeURIComponent(msg.match[1]);
+  robot.hear(/^(trans|翻訳).* (.+)$/, msg => {
+    const str = encodeURIComponent(msg.match[2]);
+    console.log(msg.match)
     got(URL+str).then(res => {
       const $ = cheerio.load(res.body);
       const exp = $('td.content-explanation').text();
